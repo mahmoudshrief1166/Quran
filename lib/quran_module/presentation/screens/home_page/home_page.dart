@@ -17,33 +17,19 @@ class HomePage extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.green,
+            elevation: 0,
+            backgroundColor: const Color(0xFFFDF6E3), 
             centerTitle: true,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(30.0),
-              ),
-            ),
-            bottom: PreferredSize(
-              preferredSize: Size.fromHeight(50.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.vertical(
-                    bottom: Radius.circular(20.0),
-                  ),
-                ),
-              ),
-            ),
             title: Text(
               "القرأن الكريم",
               style: GoogleFonts.amiriQuran(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Color(0xFF8D6748),
               ),
             ),
           ),
+          backgroundColor: const Color(0xFFFDF6E3), 
           body: BlocBuilder<QuranCubit, QuranCubitState>(
             builder: (context, state) {
               return ShowQuranList().buildQuranList(state);

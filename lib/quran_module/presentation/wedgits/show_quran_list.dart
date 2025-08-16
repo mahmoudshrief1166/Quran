@@ -7,25 +7,53 @@ import 'package:quran_app/quran_module/presentation/screens/verse_screen/verse_s
 class ShowQuranList {
   Widget buildQuranList(QuranCubitState state) {
     if (state is QuranCubitLoaded) {
-      return ListView.builder(
+      return ListView.separated(
         itemCount: state.quranList.length,
+        separatorBuilder: (context, index) => Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32),
+          child: Divider(color: Color(0xFF8D6748), thickness: 1.2, height: 0),
+        ),
         itemBuilder: (context, index) {
-          return Card(
-            elevation: 3,
-            color: const Color.fromARGB(255, 67, 143, 70),
-            margin: EdgeInsets.all(20.0),
+          return SafeArea(
             child: ListTile(
-              title: Text(
-                "${index + 1} - ${state.quranList[index].name}",
-                style: GoogleFonts.amiri(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              tileColor: const Color(0xFFFDF6E3), 
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: 12,
+                horizontal: 16,
+              ),
+              leading: CircleAvatar(
+                backgroundColor: Color(0xFF8D6748),
+                radius: 24,
+                child: Text(
+                  "${index + 1}",
+                  style: GoogleFonts.amiri(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              subtitle: Text(
-                "عدد الايات ${state.quranList[index].numberOfAyahs}",
-                style: GoogleFonts.amiri(fontSize: 20, color: Colors.white70),
+              title: Center(
+                child: Text(
+                  state.quranList[index].name,
+                  style: GoogleFonts.amiriQuran(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF8D6748),
+                  ),
+                ),
+              ),
+              subtitle: Center(
+                child: Text(
+                  "عدد الآيات: ${state.quranList[index].numberOfAyahs}",
+                  style: GoogleFonts.amiriQuran(
+                    fontSize: 18,
+                    color: Color(0xFFBCA177),
+                  ),
+                ),
               ),
               trailing: getRevelationIcon(
                 state.quranList[index].revelationType,
@@ -57,7 +85,10 @@ class ShowQuranList {
   Icon getRevelationIcon(String relevationType) {
     const iconMap = {
       'Makkah': Icon(FlutterIslamicIcons.solidKaaba, color: Colors.black),
-      'Madinah': Icon(FlutterIslamicIcons.solidMosque, color: Colors.white),
+      'Madinah': Icon(
+        FlutterIslamicIcons.solidMosque,
+        color: Color(0xFF8D6748),
+      ),
     };
     return iconMap[relevationType] ?? Icon(Icons.help_outline);
   }

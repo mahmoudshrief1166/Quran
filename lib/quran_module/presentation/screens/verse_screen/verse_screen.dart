@@ -19,32 +19,18 @@ class VerseScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFFDF6E3), // لون بيج فاتح
       appBar: AppBar(
-        backgroundColor: Colors.green[800],
+        backgroundColor: Color(0xFFFDF6E3),
         elevation: 0,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(30.0)),
-        ),
         title: Text(
           surah.name,
-          style: GoogleFonts.amiri(
+          style: GoogleFonts.amiriQuran(
             fontSize: 28,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(20.0),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.green[800],
-              borderRadius: const BorderRadius.vertical(
-                bottom: Radius.circular(30.0),
-              ),
-            ),
+            color: Color(0xFF8D6748),
           ),
         ),
         iconTheme: IconThemeData(
-          color: Colors.white, // لون الأيقونات في شريط العنوان
+          color: Color(0xFF8D6748), 
         ),
       ),
       body: Center(
@@ -54,11 +40,10 @@ class VerseScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: const Color.fromRGBO(255, 255, 255, 0.95),
             borderRadius: BorderRadius.circular(24),
-            border: Border.all(color: Colors.brown.shade200, width: 3),
+            border: Border.all(color: Colors.brown.shade200, width: 5),
             boxShadow: [
               BoxShadow(
                 color: Colors.brown.shade100,
-
                 blurRadius: 12,
                 offset: const Offset(0, 6),
               ),
@@ -76,7 +61,7 @@ class VerseScreen extends StatelessWidget {
                           style: GoogleFonts.amiriQuran(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-                            color: Colors.green[900],
+                            color: const Color(0xFF8D6748),
                           ),
                           textAlign: TextAlign.center,
                         )
@@ -99,8 +84,8 @@ class VerseScreen extends StatelessWidget {
                           children: [
                             for (int i = 0; i < surah.ayahs.length; i++) ...[
                               TextSpan(
-                                text: '${surah.ayahs[i]} ﴿${i + 1}﴾',
-                                style: GoogleFonts.amiriQuran(
+                                text: surah.ayahs[i],
+                                style: GoogleFonts.amiri(
                                   fontSize: 23,
                                   color: Colors.brown[900],
                                   height: 2.2,

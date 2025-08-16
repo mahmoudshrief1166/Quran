@@ -15,7 +15,8 @@ class LocalDataSourceQuran extends BaseLocalDataSourceQuran {
       int number = index + 1;
       List<String> ayahs = List.generate(
         quran.getVerseCount(number),
-        (ayahIndex) => quran.getVerse(number, ayahIndex + 1),
+        (ayahIndex) =>
+            quran.getVerse(number, ayahIndex + 1, verseEndSymbol: true),
       );
       return QuranModel(
         number: number,
