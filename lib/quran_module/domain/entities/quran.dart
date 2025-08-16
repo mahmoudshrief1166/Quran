@@ -5,14 +5,17 @@ class Quran extends Equatable {
   final String name;
   final int numberOfAyahs;
   final String revelationType;
+  final List<String> ayahs;
+
 
   const Quran({
     required this.number,
     required this.name,
     required this.numberOfAyahs,
     required this.revelationType,
+    required this.ayahs,
   });
 
   @override
-  List<Object?> get props => [number, name, numberOfAyahs, revelationType];
+  List<Object?> get props => [number, name, numberOfAyahs, revelationType, ayahs];
 }

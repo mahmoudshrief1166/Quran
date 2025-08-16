@@ -6,5 +6,6 @@ class QuranModel extends Quran {
     required super.name,
     required super.numberOfAyahs,
     required super.revelationType,
+    required super.ayahs,
   });
 }
